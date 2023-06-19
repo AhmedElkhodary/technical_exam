@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_form_reg" model="ir.ui.view">
+        <field name="name">Registration Form</field>
+        <field name="model">registration.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="confirmed"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,invoiced"/>
+                </header>
+                <sheet>
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="reg_code"/>
+                            <field name="student_id" domain="[('is_student' , '=' , True)]"/>
+                            <field name="phone"/>
+                            <field name="age"/>
+                            <field name="date"/>
+                        </group>
+                        <group name="group_right">
+                            <field name="currency_id"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_reg" model="ir.ui.view">
+        <field name="name">Registration List</field>
+        <field name="model">registration.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reg_code"/>
+                <field name="student_id"/>
+                <field name="phone"/>
+                <field name="age"/>
+                <field name="amount"/>
+                <field name="currency_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_search_reg" model="ir.ui.view">
+        <field name="name">Registration Filters</field>
+        <field name="model">registration.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reg_code"/>
+                <filter name="Currency"
+                        string="EGP"
+                        domain="[('currency_id','=','EGP')]"/>
+            </search>
+        </field>
+    </record>
+    <record id="view_calendar_reg" model="ir.ui.view">
+        <field name="name">Registration calendar</field>
+        <field name="model">registration.student</field>
+        <field name="arch" type="xml">
+            <calendar string="Registration" date_start="date" color="state">
+                <field name="reg_code"/>
+                <field name="student_id" avatar_field="avatar_128"/>
+                <field name="amount" widget="monetary"/>
+                <field name="state" filters="1" invisible="1"/>
+            </calendar>
+        </field>
+    </record>
+
+
+</odoo>
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Student Registration User Group -->
+        <record id="registration_group_user" model="res.groups">
+            <field name="name">Registration Manager</field>
+            <field name="implied_ids"
+                   eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+</odoo>

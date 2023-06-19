@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!-- Registration Menu -->
+    <menuitem id="menu_registration" name="Registration"/>
+
+
+    <!-- Action to open the Student Registration -->
+    <record id="action_registration" model="ir.actions.act_window">
+        <field name="name">Student Registration</field>
+        <field name="res_model">registration.student</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- Action to show the Student  -->
+    <record id="action_show_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('is_student', '=', True)]</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+
+    <!-- Menu item to open the Student Registration-->
+    <menuitem id="menu_registration_stu"
+              name="Student Registration"
+              parent="menu_registration"
+              action="action_registration"
+    />
+
+    <!-- Menu item to show the Student-->
+     <menuitem id="menu_stu"
+              name="Students"
+              parent="menu_registration"
+              action="action_show_student"
+    />
+</odoo>
