@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from datetime import datetime, timedelta, date
 
 
@@ -46,3 +46,22 @@ class StudentRegistration(models.Model):
     def action_cancel(self):
         for rec in self:
             rec.state = 'canceled'
+
+    # def action_invoice(self):
+    #     for rec in  self:
+    #         rec.state = 'invoiced'
+
+
+    def action_view_reg_invoices(self):
+        return {
+            'name': _('Invoices List'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'list,form',
+            'context': {'default_res_partner_id': self.student_id},
+            'res_model': 'account.move',
+            'domain': [('partner_id.id', '=', self.student_id.id)],
+            'target': 'current',
+            # 'view_id': self.env.ref('account.view_move_form').id,
+            # 'res_id': self.invoice_id.id,
+        }
+

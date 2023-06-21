@@ -25,3 +25,4 @@ class InvInherit(models.Model):
     registration_id = fields.Many2one("registration.student")
 
 
+

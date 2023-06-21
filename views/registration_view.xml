@@ -8,9 +8,17 @@
                 <header>
                     <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
                     <button name="action_cancel" type="object" string="Cancel" states="confirmed"/>
+                    <button name="action_view_reg_invoices" type="object" string="Invoice" states="confirmed" class="oe_highlight"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,invoiced"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_view_reg_invoices" >
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_text">Invoiced</span>
+                            </div>
+                        </button>
+                    </div>
                     <group name="group_top">
                         <group name="group_left">
                             <field name="reg_code"/>
@@ -71,5 +79,4 @@
 
 
 </odoo>
-
 
